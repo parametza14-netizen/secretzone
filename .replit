@@ -1,0 +1,108 @@
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-25_05"
+
+[agent]
+expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Discord Bot"
+
+[[workflows.workflow]]
+name = "Discord Bot"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow]]
+name = "node -v"
+mode = "sequential"
+author = 11014619
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node -v"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
+
+[[ports]]
+localPort = 33605
+externalPort = 6000
+
+[[ports]]
+localPort = 33669
+externalPort = 8000
+
+[[ports]]
+localPort = 34149
+externalPort = 3003
+
+[[ports]]
+localPort = 35383
+externalPort = 3001
+
+[[ports]]
+localPort = 35473
+externalPort = 3000
+
+[[ports]]
+localPort = 35861
+externalPort = 8008
+
+[[ports]]
+localPort = 35871
+externalPort = 5173
+
+[[ports]]
+localPort = 37861
+externalPort = 8099
+
+[[ports]]
+localPort = 38195
+externalPort = 9000
+
+[[ports]]
+localPort = 39689
+externalPort = 5000
+
+[[ports]]
+localPort = 40289
+externalPort = 3002
+
+[[ports]]
+localPort = 43645
+externalPort = 4200
+
+[[ports]]
+localPort = 45757
+externalPort = 8081
+
+[[ports]]
+localPort = 46135
+externalPort = 6800
+
+[deployment]
+deploymentTarget = "vm"
+run = "npm start"
